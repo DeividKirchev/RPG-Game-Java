@@ -37,7 +37,7 @@ public class PictureDataBase
 	public BufferedImage DragonSword;
 	public BufferedImage GreatSword;
 	public BufferedImage talentsBG;
-	
+	public BufferedImage player_Warrior1;
 	public BufferedImage boardHelmet;
 	public BufferedImage boardChest;
 	public BufferedImage boardWeaponL;
@@ -88,7 +88,7 @@ public class PictureDataBase
 			e.printStackTrace();
 		}
 		try {
-			player_Warrior = ImageIO.read(new File(DefaultFilePath+"\\src\\basics\\player_warrior1.png"));
+			player_Warrior = ImageIO.read(new File(DefaultFilePath+"\\src\\basics\\player_warrior.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -104,6 +104,11 @@ public class PictureDataBase
 		}
 		try {
 			player_Warrior_damaged = ImageIO.read(new File(DefaultFilePath+"\\src\\basics\\player_warrior_damaged.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			player_Warrior1 = ImageIO.read(new File(DefaultFilePath+"\\src\\basics\\player_warrior1.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

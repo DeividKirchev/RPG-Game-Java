@@ -100,7 +100,7 @@ public class MainFrame extends JFrame {
 	{
 		if(CharacterClass == "Warrior")
 		{
-			playerImg = pic.player_Warrior;
+			playerImg = pic.player_Warrior1;
 		}
 		if(CharacterClass == "Mage")
 		{
