@@ -39,7 +39,6 @@ public class CharacterChoice extends JFrame {
 			}
 		});
 	}
-
 	public CharacterChoice() {
 		this.setIconImage(pic.warrior_trans);
 		setTitle("Game");
