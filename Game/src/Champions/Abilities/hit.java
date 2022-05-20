@@ -1,4 +1,4 @@
-package Champions.Abbilities;
+package Champions.Abilities;
 
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -8,12 +8,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
-import Champions.Abbility;
+import Champions.Ability;
 import Champions.Champion;
 import basics.Map;
 import main.MainFrame;
 
-public class hit extends Abbility {
+public class hit extends Ability {
 	public hit(Champion player, JFrame frame)
 	{
 		Name = "Hit";
@@ -32,7 +32,7 @@ public class hit extends Abbility {
 		timerDMG.setRepeats(false);
 		frame.getContentPane().add(effect_label);
 		
-		abbility_image.setIcon(new ImageIcon(pic.sword_hit.getScaledInstance(50, 50, Image.SCALE_FAST)));
+		ability_image.setIcon(new ImageIcon(pic.sword_hit.getScaledInstance(50, 50, Image.SCALE_FAST)));
 		cooldown.setInitialDelay(1000);
 		cooldown.setRepeats(false);
 	}
@@ -51,7 +51,7 @@ public class hit extends Abbility {
 		if(onCooldown)return false;
 		onCooldown = true;
 		cooldown.start();
-		frame.cdAB1.setIcon(this.abbility_image.getIcon());
+		frame.cdAB1.setIcon(this.ability_image.getIcon());
 		
 		if(!player.checkHit(80))
 			{

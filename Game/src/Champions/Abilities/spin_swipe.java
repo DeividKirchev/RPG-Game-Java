@@ -1,4 +1,4 @@
-package Champions.Abbilities;
+package Champions.Abilities;
 
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -9,12 +9,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
-import Champions.Abbility;
+import Champions.Ability;
 import Champions.Champion;
 import basics.Map;
 import main.MainFrame;
 
-public class spin_swipe extends Abbility {
+public class spin_swipe extends Ability {
 	
 	JLabel[] effect_labels = new JLabel[9];
 	
@@ -43,7 +43,7 @@ public class spin_swipe extends Abbility {
 		timerDMG = new Timer(500,effectTimer);
 		timerDMG.setRepeats(false);
 		
-		abbility_image.setIcon(new ImageIcon(pic.sword_slash.getScaledInstance(50, 50, Image.SCALE_FAST)));
+		ability_image.setIcon(new ImageIcon(pic.sword_slash.getScaledInstance(50, 50, Image.SCALE_FAST)));
 		cooldown.setInitialDelay(1000);
 		cooldown.setRepeats(false);
 	}
@@ -60,7 +60,7 @@ public class spin_swipe extends Abbility {
 		if(onCooldown)return false;
 		onCooldown = true;
 		cooldown.start();
-		frame.cdAB3.setIcon(this.abbility_image.getIcon());
+		frame.cdAB3.setIcon(this.ability_image.getIcon());
 		for (int i =casterX-1;i<=casterX+1;i++)
 		{
 			for (int j = casterY-1;j<=casterY+1;j++)

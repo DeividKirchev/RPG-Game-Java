@@ -1,8 +1,8 @@
 package Champions;
 
-import Champions.Abbilities.execute;
-import Champions.Abbilities.hit;
-import Champions.Abbilities.spin_swipe;
+import Champions.Abilities.execute;
+import Champions.Abilities.hit;
+import Champions.Abilities.spin_swipe;
 import main.MainFrame;
 
 public class Warrior extends Champion{
@@ -26,9 +26,9 @@ public class Warrior extends Champion{
 		baseRange = 1;
 		current_health = baseHealth;
 		
-		abbility1 = new hit(this,frame);
-		abbility2 = new execute(this,frame);
-		abbility3 = new spin_swipe(this,frame);
+		ability1 = new hit(this,frame);
+		ability2 = new execute(this,frame);
+		ability3 = new spin_swipe(this,frame);
 	}
 	// Base constructor
 	public Warrior()

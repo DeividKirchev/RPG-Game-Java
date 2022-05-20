@@ -18,12 +18,12 @@ public abstract class Champion {
 	protected String name = new String();
 	
 	public Random rand = new Random();
-	public Abbility abbility1;
-	public Abbility abbility2;
-	public Abbility abbility3;
-	public Abbility abbility4;
-	public Abbility abbility5;
-	public Abbility abbility6;
+	public Ability ability1;
+	public Ability ability2;
+	public Ability ability3;
+	public Ability ability4;
+	public Ability ability5;
+	public Ability ability6;
 	//Constructors:
 	// Everything constructor
 	public Champion(int hp,int sp,int arm,int dmg,int rng)

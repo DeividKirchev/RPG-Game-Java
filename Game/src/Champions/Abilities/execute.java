@@ -1,4 +1,4 @@
-package Champions.Abbilities;
+package Champions.Abilities;
 
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -8,12 +8,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
-import Champions.Abbility;
+import Champions.Ability;
 import Champions.Champion;
 import basics.Map;
 import main.MainFrame;
 
-public class execute extends Abbility {
+public class execute extends Ability {
 	public execute(Champion player, JFrame frame)
 	{
 		Name = "Execute";
@@ -32,7 +32,7 @@ public class execute extends Abbility {
 		timerDMG.setRepeats(false);
 		frame.getContentPane().add(effect_label);
 		
-		abbility_image.setIcon(new ImageIcon(pic.execute.getScaledInstance(50, 50, Image.SCALE_FAST)));
+		ability_image.setIcon(new ImageIcon(pic.execute.getScaledInstance(50, 50, Image.SCALE_FAST)));
 		cooldown.setInitialDelay(5000);
 		cooldown.setRepeats(false);
 	}
@@ -52,7 +52,7 @@ public class execute extends Abbility {
 		if(onCooldown)return false;
 		onCooldown = true;
 		cooldown.start();
-		frame.cdAB2.setIcon(this.abbility_image.getIcon());
+		frame.cdAB2.setIcon(this.ability_image.getIcon());
 		
 		
 		int hpPercent = target.current_Health()*100/target.Health();

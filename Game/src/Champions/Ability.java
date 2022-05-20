@@ -11,13 +11,13 @@ import basics.Map;
 import basics.PictureDataBase;
 import main.MainFrame;
 
-public abstract class Abbility {
+public abstract class Ability {
 	protected String Name = "";
 	protected String Description = "";
 	public ImageIcon effect;
 	public PictureDataBase pic = new PictureDataBase();
 	protected JLabel effect_label = new JLabel();
-	protected JLabel abbility_image = new JLabel();
+	protected JLabel ability_image = new JLabel();
 	protected ActionListener effectTimer;
 	protected Timer cooldown = new Timer(1000, new ActionListener() {
 		public void actionPerformed(ActionEvent evt) {
