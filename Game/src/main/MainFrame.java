@@ -47,7 +47,6 @@ public class MainFrame extends JFrame {
 	private JLabel background;
 	int targetX = 0,targetY = 0;
 	NormalChest nc = new NormalChest();
-	
 	static String CharacterClass;
 	
 	Timer timerDMG;
@@ -605,6 +604,8 @@ public class MainFrame extends JFrame {
 	
 	
 	public MainFrame(String CharacterClass,String Map){
+		
+        
 		this.setIconImage(pic.warrior_trans);
 		map  = new Map(FolderPath+Map);
 		//backpack.hide();

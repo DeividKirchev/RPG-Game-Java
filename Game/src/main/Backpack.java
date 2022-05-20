@@ -228,6 +228,7 @@ public class Backpack extends JFrame {
 				itemExtra = null;
 				setIcon(lblExtra);
 				paneStats.hide();
+				MainFrame.setStats();
 				return;
 				}
 			if(l.getName() == lblChest.getName())
@@ -237,6 +238,7 @@ public class Backpack extends JFrame {
 				itemChest = null;
 				setIcon(lblChest);
 				paneStats.hide();
+				MainFrame.setStats();
 				return;
 				}
 			if(l.getName() == lblLegs.getName())
@@ -246,6 +248,7 @@ public class Backpack extends JFrame {
 				itemLegs = null;
 				setIcon(lblLegs);
 				paneStats.hide();
+				MainFrame.setStats();
 				return;
 				}
 			if(l.getName() == lblHelmet.getName())
@@ -255,6 +258,7 @@ public class Backpack extends JFrame {
 				itemHelmet = null;
 				setIcon(lblHelmet);
 				paneStats.hide();
+				MainFrame.setStats();
 				return;
 				}
 			if(l.getName() == lblWeaponLeft.getName())
@@ -264,6 +268,7 @@ public class Backpack extends JFrame {
 				itemWeaponLeft = null;
 				setIcon(lblWeaponLeft);
 				paneStats.hide();
+				MainFrame.setStats();
 				return;
 				}
 			if(l.getName() == lblWeaponRight.getName())
@@ -273,6 +278,7 @@ public class Backpack extends JFrame {
 				itemWeaponRight = null;
 				setIcon(lblWeaponRight);
 				paneStats.hide();
+				MainFrame.setStats();
 				return;
 				}
 			for(int i=0;i<15;i++)
@@ -289,6 +295,7 @@ public class Backpack extends JFrame {
 						setIcon(lblExtra);
 						setIcon(inventory[i]);
 						paneStats.hide();
+						MainFrame.setStats();
 						return;
 					}
 					if(inventory_items[i].type == Item.Type.CHEST)
@@ -299,6 +306,7 @@ public class Backpack extends JFrame {
 						setIcon(lblChest);
 						setIcon(inventory[i]);
 						paneStats.hide();
+						MainFrame.setStats();
 						return;
 					}
 					if(inventory_items[i].type == Item.Type.LEGS)
@@ -309,6 +317,7 @@ public class Backpack extends JFrame {
 						setIcon(lblLegs);
 						setIcon(inventory[i]);
 						paneStats.hide();
+						MainFrame.setStats();
 						return;
 					}
 					if(inventory_items[i].type == Item.Type.WEAPON)
@@ -328,6 +337,7 @@ public class Backpack extends JFrame {
 						}
 						setIcon(inventory[i]);
 						paneStats.hide();
+						MainFrame.setStats();
 						return;
 					}
 					if(inventory_items[i].type == Item.Type.HELMET)
@@ -338,6 +348,7 @@ public class Backpack extends JFrame {
 						setIcon(lblHelmet);
 						setIcon(inventory[i]);
 						paneStats.hide();
+						MainFrame.setStats();
 						return;
 					}
 					
