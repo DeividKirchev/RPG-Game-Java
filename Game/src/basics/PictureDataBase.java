@@ -44,7 +44,7 @@ public class PictureDataBase
 	public BufferedImage boardWeaponR;
 	public BufferedImage boardExtra;
 	public BufferedImage boardLegs;
-	
+	public BufferedImage menuBG;
 	public BufferedImage backpack;
 	public BufferedImage warrior_trans;
 	public BufferedImage health_potion;
@@ -263,6 +263,11 @@ try {
 }
 try {
 	sword_slash = ImageIO.read(new File(DefaultFilePath+"\\src\\basics\\sword_slash.png"));
+} catch (IOException e) {
+	e.printStackTrace();
+}
+try {
+	menuBG = ImageIO.read(new File(DefaultFilePath+"\\src\\basics\\menuBG.png"));
 } catch (IOException e) {
 	e.printStackTrace();
 }

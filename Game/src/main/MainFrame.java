@@ -32,7 +32,7 @@ public class MainFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	final int MAP_SIZE = 10 + 1;
 	final String FolderPath = System.getProperty("user.dir")+"\\src\\basics\\Maps\\";
-	
+	Menu menu = new Menu(this);
 	private JPanel contentPane;
 	private JPanel contentPane1;
 	JButton btnExit;
@@ -230,6 +230,14 @@ public class MainFrame extends JFrame {
 	{
 		if(player.Alive()==false)return;
 		HideLabels();
+		if(e.getKeyCode() == KeyEvent.VK_ESCAPE)
+		{
+			contentPane.hide();
+			menu.getContentPane().show();
+			contentPane.show();
+			this.setContentPane(menu.getContentPane());
+			menu.btnExit.requestFocusInWindow();
+		}
 		if(e.getKeyCode() == KeyEvent.VK_UP || e.getKeyChar()=='w')
 		{
 			if(movedY == 0 && moveY==-5)return;
@@ -587,6 +595,7 @@ public class MainFrame extends JFrame {
 	public void switchContentPane()
 	{
 	    contentPane1.hide();
+	    menu.getContentPane().hide();
 	    this.setContentPane(contentPane);
 	    contentPane.show();
 	    btnExit.requestFocus();
