@@ -177,6 +177,7 @@ public class Map {
 	}
 	//========================================
 	public Boolean isNPC(int x,int y) {
+		if(x<0 || y<0) return false;
 		return npc_map[x][y];
 	}
 	//DEFAULT SET INTERACTABLE TRUE
@@ -196,6 +197,7 @@ public class Map {
 		return chest_map[x][y];
 	}
 	public Warrior getWarrior(int x,int y) {
+		if(x<0 || y<0)return null;
 		return warrior_map[x][y];
 	}
 	public void setWarrior(int x,int y) {

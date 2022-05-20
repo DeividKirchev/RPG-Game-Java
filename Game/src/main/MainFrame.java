@@ -574,6 +574,8 @@ public class MainFrame extends JFrame {
 		lblTarget.setVisible(false);
 		lblTargetHealthLBL.setVisible(false);
 		lblTargetHealth.setVisible(false);
+		targetX = -1;
+		targetY = -1;
 	}
 	
 	////////////////////////////////////////////////////////// TEMPORARY ///////////////////////////////// WILL FIX ///////////////////////////////////////////////

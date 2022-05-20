@@ -38,6 +38,9 @@ public class execute extends Abbility {
 	}
 	public Boolean cast(Map map,int targetX,int targetY, int casterX,int casterY, MainFrame frame)
 	{
+		Champion target = map.getWarrior(targetX, targetY);
+		if(target == null)return false; 
+		
 		cooldown.addActionListener(new ActionListener()
 		{
 	public void actionPerformed(ActionEvent evt) {
@@ -51,8 +54,7 @@ public class execute extends Abbility {
 		cooldown.start();
 		frame.cdAB2.setIcon(this.abbility_image.getIcon());
 		
-		Champion target = map.getWarrior(targetX, targetY);
-		if(target == null)return false; 
+		
 		int hpPercent = target.current_Health()*100/target.Health();
 		if(hpPercent < 35)
 		   {

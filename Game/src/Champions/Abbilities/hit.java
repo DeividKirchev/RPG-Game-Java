@@ -38,6 +38,9 @@ public class hit extends Abbility {
 	}
 	public Boolean cast(Map map,int targetX,int targetY, int casterX,int casterY, MainFrame frame)
 	{
+		Champion target = map.getWarrior(targetX, targetY);
+		if(target == null)return false;
+		
 		cooldown.addActionListener(new ActionListener()
 		{
 	public void actionPerformed(ActionEvent evt) {
@@ -58,9 +61,6 @@ public class hit extends Abbility {
 			{
 			return false;
 			}
-		
-		Champion target = map.getWarrior(targetX, targetY);
-		if(target == null)return false;
 		effect_label.setIcon(this.getEffect());
 		effect_label.setVisible(true);
 		effect_label.setBounds((targetX-frame.movedX)*50+50,(targetY-frame.movedY)*50+50,50,50);
