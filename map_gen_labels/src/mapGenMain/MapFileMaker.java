@@ -30,11 +30,14 @@ public class MapFileMaker {
 		CreateFile(MapName+".txt");
 	}
 	
-	public MapFileMaker(String Map, String MapName) throws IOException
+	public MapFileMaker(String MapName) throws IOException
 	{
 		CreateMap(MapName);
 		fWrite = new FileWriter(filePath+MapName+".txt",false);
-		fWrite.write(Map);
+	}
+	public void writeMap(String map) throws IOException
+	{
+		fWrite.write(map);
 		fWrite.close();
 	}
 	

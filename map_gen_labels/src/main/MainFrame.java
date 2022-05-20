@@ -184,6 +184,7 @@ public class MainFrame extends JFrame {
 	          txtSizeX.setText(Integer.toString(data.length()));
 	      }
 	      txtSizeX.setText(Integer.toString(y));
+	      myReader.close();
 	}
 	public void paint(Graphics g)
 	{
@@ -247,11 +248,14 @@ public class MainFrame extends JFrame {
 				
 				System.out.print(Map);
 				try {
-					MapFileMaker filemaker = new MapFileMaker(Map,txtMapName.getText());
+					MapFileMaker filemaker = new MapFileMaker(txtMapName.getText());
+					filemaker.writeMap(Map);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+			
+				
 				
 			}
 		});
