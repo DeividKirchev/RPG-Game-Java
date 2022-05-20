@@ -731,6 +731,7 @@ public class MainFrame extends JFrame {
 		JButton btnBackpack = new JButton("Backpack");
 		btnBackpack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(!player.Alive())return;
 				backpack.show();
 			}
 		});
@@ -742,6 +743,7 @@ public class MainFrame extends JFrame {
 		JButton btnTalents = new JButton("Talents");
 		btnTalents.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(!player.Alive())return;
 				contentPane.hide();
 				setContentPane(contentPane1);
 				contentPane1.show();

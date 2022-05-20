@@ -46,6 +46,7 @@ public class Backpack extends JFrame {
 		@Override
 		public void mousePressed(MouseEvent e) 
 		{
+			if(!MainFrame.player.Alive())return;
 			dragging = true;
 			swap = null;
 			JLabel l = (JLabel) e.getSource();
@@ -88,6 +89,7 @@ public class Backpack extends JFrame {
 
 		public void mouseReleased(MouseEvent e) 
 		{
+			if(!MainFrame.player.Alive())return;
 			dragging=false;
 			movingLabel.setVisible(false);
 			if(swap1 == null)return;
@@ -218,6 +220,7 @@ public class Backpack extends JFrame {
 		
 		@Override
 		public void mouseClicked(MouseEvent e) {
+			if(!MainFrame.player.Alive())return;
 			JLabel l = (JLabel) e.getSource();
 			if (e.getClickCount() == 2 && !e.isConsumed()) 
 			{
