@@ -629,6 +629,7 @@ public class MainFrame extends JFrame {
 					}
 					return;
 				}
+				if(x >= 11 || x<0 || y>=11 || y<0)return;
 				target(x + movedX, y + movedY);
 			}
 
