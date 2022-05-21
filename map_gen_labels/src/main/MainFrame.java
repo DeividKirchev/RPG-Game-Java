@@ -38,7 +38,7 @@ public class MainFrame extends JFrame {
 	private JTextField txtSizeY;
 	private JTextField txtMapName;
 	private JTextField txtImport;
-	
+	JLabel lblStart;
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -108,6 +108,17 @@ public class MainFrame extends JFrame {
 						 {
 							 tmp.setIcon(new ImageIcon(pic.Chest.getScaledInstance(25, 25, Image.SCALE_FAST)));
 							 tmp.setText("c");
+						 }
+						 if(Selected == "Start")
+						 {
+							 tmp.setIcon(new ImageIcon(pic.player_Warrior.getScaledInstance(25, 25, Image.SCALE_FAST)));
+							 tmp.setText("|");
+							 if(lblStart !=null) 
+							 {
+							 lblStart.setIcon(new ImageIcon(pic.Grass.getScaledInstance(25, 25, Image.SCALE_FAST)));
+							 lblStart.setText("t");
+							 }
+							 lblStart = tmp;
 						 }
 					 }
 					 public void mouseEntered(MouseEvent e)
@@ -261,7 +272,7 @@ public class MainFrame extends JFrame {
 		});
 		
 		btnExport.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnExport.setBounds(957, 553, 117, 37);
+		btnExport.setBounds(957, 615, 117, 37);
 		contentPane.add(btnExport);
 		
 		JButton btnTree = new JButton("Tree");
@@ -318,23 +329,23 @@ public class MainFrame extends JFrame {
 		contentPane.add(btnNull);
 		
 		txtSizeX = new JTextField();
-		txtSizeX.setBounds(988, 402, 86, 20);
+		txtSizeX.setBounds(988, 464, 86, 20);
 		contentPane.add(txtSizeX);
 		txtSizeX.setColumns(10);
 		
 		txtSizeY = new JTextField();
 		txtSizeY.setColumns(10);
-		txtSizeY.setBounds(988, 433, 86, 20);
+		txtSizeY.setBounds(988, 495, 86, 20);
 		contentPane.add(txtSizeY);
 		
 		JLabel lblSizeX = new JLabel("Size X:");
 		lblSizeX.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblSizeX.setBounds(897, 402, 81, 20);
+		lblSizeX.setBounds(897, 464, 81, 20);
 		contentPane.add(lblSizeX);
 		
 		JLabel lblSizeY = new JLabel("Size Y:");
 		lblSizeY.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblSizeY.setBounds(897, 432, 81, 21);
+		lblSizeY.setBounds(897, 494, 81, 21);
 		contentPane.add(lblSizeY);
 		//================================== CHANGE SIZE ===========================
 		JButton btnChangeSize = new JButton("Change Size");
@@ -375,13 +386,13 @@ public class MainFrame extends JFrame {
 				
 			}
 		});
-		btnChangeSize.setBounds(957, 464, 117, 30);
+		btnChangeSize.setBounds(957, 526, 117, 30);
 		contentPane.add(btnChangeSize);
 		
 		txtMapName = new JTextField();
 		txtMapName.setText("MapName");
 		txtMapName.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		txtMapName.setBounds(957, 515, 117, 27);
+		txtMapName.setBounds(957, 577, 117, 27);
 		contentPane.add(txtMapName);
 		txtMapName.setColumns(10);
 		
@@ -389,7 +400,7 @@ public class MainFrame extends JFrame {
 		txtImport.setText("MapName");
 		txtImport.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtImport.setColumns(10);
-		txtImport.setBounds(957, 612, 117, 27);
+		txtImport.setBounds(957, 674, 117, 27);
 		contentPane.add(txtImport);
 		
 		JButton btnImport = new JButton("Import");
@@ -403,8 +414,20 @@ public class MainFrame extends JFrame {
 			}
 		});
 		btnImport.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnImport.setBounds(957, 652, 117, 37);
+		btnImport.setBounds(957, 714, 117, 37);
 		contentPane.add(btnImport);
+		
+		JButton btnStart = new JButton("Select Start");
+		btnStart.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblSelected.setIcon(new ImageIcon(pic.player_Warrior.getScaledInstance(100, 100,Image.SCALE_FAST)));
+				Selected = "Start";
+			}
+		});
+		btnStart.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnStart.setFocusable(false);
+		btnStart.setBounds(957, 416, 117, 37);
+		contentPane.add(btnStart);
 		
 		
 		//=====================================================

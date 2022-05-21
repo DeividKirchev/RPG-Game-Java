@@ -21,6 +21,8 @@ public class Map {
 	private Boolean[][] wall_map = new Boolean[3050][3050];
 	private Warrior[][] warrior_map = new Warrior[3050][3050];
 	public JLabel[][] picture_map = new JLabel[3050][3050];
+	public int startX = 2;
+	public int startY = 2;
 	PictureDataBase pic = new PictureDataBase();
 	// Different constructors:
 	// Default size: 150-150
@@ -37,6 +39,7 @@ public class Map {
 				picture_map[i][j] = new JLabel();
 			}
 	}
+	
 	// Size x-x (square)
 	public Map(int size)
 	{
@@ -264,6 +267,13 @@ public class Map {
 	    		setNPC(x,y);
 	    		setWarrior(x,y);
 	    		}
+	    	if(c=='|')
+	    	{
+	    		startX = x;
+	    		startY = y;
+	    		setPicture(x,y,pic.Grass);
+	    		setMovable(x,y,false);
+	    	}
 	    	}
 	    	sizeX=s.length();
 	    	y++;
@@ -293,6 +303,20 @@ public class Map {
 	    }
 	    
 	}
+	// Getters and setters for start
+		public int getStartX() {
+			return startX;
+		}
+		public void setStartX(int startX) {
+			this.startX = startX;
+		}
+		public int getStartY() {
+			return startY;
+		}
+		public void setStartY(int startY) {
+			this.startY = startY;
+		}
+		//--------------------------------------------------------------
 
 }
 

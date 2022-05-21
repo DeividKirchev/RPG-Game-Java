@@ -6,7 +6,7 @@ import java.io.FileWriter;
 public class MapFileMaker {
 	//Scanner scan = new Scanner();
 	FileWriter fWrite;
-	final static String filePath = "C:\\Users\\Student\\eclipse-workspace\\Deivd Kirchev\\map_gen_labels\\src\\";
+	final static String filePath = System.getProperty("user.dir");
 	public void CreateFile(String FileName)
 	{
 		try {
@@ -33,7 +33,7 @@ public class MapFileMaker {
 	public MapFileMaker(String MapName) throws IOException
 	{
 		CreateMap(MapName);
-		fWrite = new FileWriter(filePath+MapName+".txt",false);
+		fWrite = new FileWriter(filePath+"\\"+MapName+".txt",false);
 	}
 	public void writeMap(String map) throws IOException
 	{
