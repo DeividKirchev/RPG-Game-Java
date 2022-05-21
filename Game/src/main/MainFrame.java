@@ -367,6 +367,7 @@ public class MainFrame extends JFrame {
 	// ========================================================
 	// =================Move map==============================
 	private void moveMap() {
+		untarget();
 		if (moveX > 5) {
 			moveX = -5;
 			movedX = movedX + 11;
@@ -417,13 +418,15 @@ public class MainFrame extends JFrame {
 					int x = i - movedX;
 					int y = j - movedY;
 					if (move == 0 && map.checkMovable(i + 1, j)) {
-
 						map.Move(i, j, i + 1, j);
 						moved[i + 1][j] = true;
 						setMap(x, y);
 						setMap(x + 1, y);
 						if (targetX == x + movedX && targetY == y + movedY)
+						{
 							targetX++;
+							if(targetX/11 != movedX)untarget();
+						}
 						continue;
 					}
 					if (move == 1 && map.checkMovable(i - 1, j)) {
@@ -431,8 +434,11 @@ public class MainFrame extends JFrame {
 						moved[i - 1][j] = true;
 						setMap(x, y);
 						setMap(x - 1, y);
-						if (targetX == x + movedX && targetY == y + movedY)
+						if (targetX == x + movedX && targetY == y + movedY) 
+						{
 							targetX--;
+							if(targetX/11*11  != movedX)untarget();
+						}
 						continue;
 					}
 					if (move == 2 && map.checkMovable(i, j + 1)) {
@@ -441,7 +447,10 @@ public class MainFrame extends JFrame {
 						setMap(x, y);
 						setMap(x, y + 1);
 						if (targetX == x + movedX && targetY == y + movedY)
+						{
 							targetY++;
+							if(targetY/11*11  != movedY)untarget();
+						}
 						continue;
 					}
 					if (move == 3 && map.checkMovable(i, j - 1)) {
@@ -450,7 +459,10 @@ public class MainFrame extends JFrame {
 						setMap(x, y);
 						setMap(x, y - 1);
 						if (targetX == x + movedX && targetY == y + movedY)
+						{;
 							targetY--;
+							if(targetY/11*11 != movedY)untarget();
+						}
 						continue;
 					}
 				}
