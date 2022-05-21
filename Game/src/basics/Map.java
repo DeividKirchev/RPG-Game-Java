@@ -150,6 +150,7 @@ public class Map {
 	// Check for wall
 	public Boolean checkWall(int x,int y)
 	{
+		if(wall_map[x][y] == null)return false;
 		return wall_map[x][y];
 	}
 	//--------------------
@@ -197,6 +198,7 @@ public class Map {
 		chest_map[x][y] = true;
 	}
 	public Boolean isChest(int x,int y) {
+		if(chest_map[x][y] == null) return false;
 		return chest_map[x][y];
 	}
 	public Warrior getWarrior(int x,int y) {

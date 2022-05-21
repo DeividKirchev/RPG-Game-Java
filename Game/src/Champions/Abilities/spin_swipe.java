@@ -67,9 +67,11 @@ public class spin_swipe extends Ability {
 			{
 				Champion target = map.getWarrior(i, j);
 				if(target == null)continue;
+				if(i-frame.movedX < 0 || i-frame.movedX >= 11)continue;
+				if(j-frame.movedY < 0 || j-frame.movedY >= 11)continue;
+				
 				if(!player.checkHit(80))continue;
 				target.setCurrent_Health(target.current_Health() -  (Math.max((player.Damage()/4 * (100-target.Armor()) / 100),0) + player.rand.nextInt(10)));
-				
 				if(map.getWarrior(i, j) != null) 
 				{
 				if(!map.getWarrior(i,j).Alive())
@@ -86,15 +88,20 @@ public class spin_swipe extends Ability {
 		{
 			for (int j = casterY-1;j<=casterY+1;j++)
 			{
+				if(i-frame.movedX < 0 || i-frame.movedX >= 11)continue;
+				if(j-frame.movedY < 0 || j-frame.movedY >= 11)continue;
+				if(map.checkWall(i, j))continue;
+				if(map.isChest(i, j))continue;
 				if(i == casterX && j == casterY)continue;
 				effect_labels[p].setIcon(this.getEffect());
 				effect_labels[p].setVisible(true);
 				effect_labels[p].setBounds((i-frame.movedX)*50+50,(j-frame.movedY)*50+50,50,50);
-				timerDMG.start();
 				p++;
+				
 			}
 		}
-		frame.target(targetX, targetY);
+		timerDMG.start();
+		frame.target(targetX, targetY); // This is here because if your target takes damage the new health does not show in the frame :)
 		return true;
 	}
 
