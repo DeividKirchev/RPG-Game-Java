@@ -40,6 +40,10 @@ public class hit extends Ability {
 	{
 		Champion target = map.getWarrior(targetX, targetY);
 		if(target == null)return false;
+		if(!checkRange(targetX, targetY, casterX, casterY,  1))
+			{
+			return false;
+			}
 		
 		cooldown.addActionListener(new ActionListener()
 		{
@@ -57,10 +61,7 @@ public class hit extends Ability {
 			{
 			return false;
 			}
-		if(!checkRange(targetX, targetY, casterX, casterY,  1))
-			{
-			return false;
-			}
+		
 		effect_label.setIcon(this.getEffect());
 		effect_label.setVisible(true);
 		effect_label.setBounds((targetX-frame.movedX)*50+50,(targetY-frame.movedY)*50+50,50,50);
