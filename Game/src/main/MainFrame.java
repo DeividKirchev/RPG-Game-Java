@@ -178,14 +178,14 @@ public class MainFrame extends JFrame {
 
 	// =============================SET MAP ON START ONLY=======================
 	private void setMapStart() {
-		movedX = map.getStartX()/11;
+		movedX = map.getStartX()/11*11;
 		moveX = map.getStartX()%11-5;
-		movedY = map.getStartY()/11;
+		movedY = map.getStartY()/11*11;
 		moveY = map.getStartY()%11-5;
 		
-		for (int i = movedX; i < movedX+MAP_SIZE; i++) {
+		for (int i = 0; i < MAP_SIZE; i++) {
 
-			for (int j = movedY; j < movedY+MAP_SIZE; j++) {
+			for (int j = 0; j < MAP_SIZE; j++) {
 				// System.out.print("AAAA");
 				JLabel tmp = new JLabel();
 
@@ -199,7 +199,7 @@ public class MainFrame extends JFrame {
 				}
 				// ------------------------------------
 				try {
-					tiles[i][j].setIcon(map.getPicture(i, j));
+					tiles[i][j].setIcon(map.getPicture(i+movedX, j+movedY));
 					tiles[i][j].setBounds(50 + i * 50, 50 + j * 50, 50, 50);
 					contentPane.add(tiles[i][j]);
 				} catch (Exception e) {
