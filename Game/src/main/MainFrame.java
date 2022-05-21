@@ -219,7 +219,7 @@ public class MainFrame extends JFrame {
 			this.setContentPane(menu.getContentPane());
 			menu.btnExit.requestFocusInWindow();
 		}
-		if (e.getKeyCode() == KeyEvent.VK_UP || e.getKeyChar() == 'w') {
+		if (e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W) {
 			if (movedY == 0 && moveY == -5)
 				return;
 
@@ -241,7 +241,7 @@ public class MainFrame extends JFrame {
 			}
 
 		}
-		if (e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyChar() == 's') {
+		if (e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S) {
 			if (movedY == map.getSizeY() - 12 && moveY == 5)
 				return;
 			if (map.checkMovable(MAP_SIZE / 2 + moveX + movedX, MAP_SIZE / 2 + moveY + 1 + movedY)) {
@@ -261,7 +261,7 @@ public class MainFrame extends JFrame {
 				}
 			}
 		}
-		if (e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyChar() == 'a') {
+		if (e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A) {
 			if (movedX == 0 && moveX == -5)
 				return;
 			if (map.checkMovable(MAP_SIZE / 2 + moveX - 1 + movedX, MAP_SIZE / 2 + moveY + movedY)) {
@@ -280,7 +280,7 @@ public class MainFrame extends JFrame {
 				}
 			}
 		}
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyChar() == 'd') {
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_D) {
 			if (movedX == map.getSizeX() - 12 && moveX == 5)
 				return;
 			if (map.checkMovable(MAP_SIZE / 2 + moveX + 1 + movedX, MAP_SIZE / 2 + moveY + movedY)) {
@@ -300,7 +300,7 @@ public class MainFrame extends JFrame {
 				}
 			}
 		}
-		if (e.getKeyChar() == 'q') {
+		if (e.getKeyCode() == KeyEvent.VK_Q) {
 			// System.out.println(targetX+ " " + targetY);
 			if (player.ability1.cast(map, targetX, targetY, moveX + movedX + 5, moveY + movedY + 5, this)) {
 				/*
@@ -320,7 +320,7 @@ public class MainFrame extends JFrame {
 				}
 			}
 		}
-		if (e.getKeyChar() == 'e') {
+		if (e.getKeyCode() == KeyEvent.VK_E) {
 			// System.out.println(targetX+ " " + targetY);
 			if (player.ability2.cast(map, targetX, targetY, moveX + movedX + 5, moveY + movedY + 5, this)) {
 				/*
@@ -340,7 +340,7 @@ public class MainFrame extends JFrame {
 				}
 			}
 		}
-		if (e.getKeyChar() == '1') {
+		if (e.getKeyCode() == KeyEvent.VK_1) {
 			// System.out.println(targetX+ " " + targetY);
 			if (player.ability3.cast(map, targetX, targetY, moveX + movedX + 5, moveY + movedY + 5, this)) {
 				/*
