@@ -3,6 +3,7 @@ package main;
 import java.awt.Dimension;
 import java.awt.Image;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -16,11 +17,16 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 public class Menu extends JFrame {
 	private static final long serialVersionUID = 1L;
-	
+	String filePath = System.getProperty("user.dir") + "\\src\\basics\\";
 	PictureDataBase pic = new PictureDataBase();
 	private JPanel contentPane;
 	MainFrame Mainframe;
@@ -31,6 +37,15 @@ public class Menu extends JFrame {
 	}
 	
 	public Menu(MainFrame mainframe) {
+		BufferedImage cancel_image = null;
+		try {
+			cancel_image = ImageIO.read(new File(filePath+"cancel_button.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+				
+				
+				
 		setFocusable(false);
 		Mainframe = mainframe;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -40,14 +55,42 @@ public class Menu extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JButton btnCancel = new JButton("Cancel");
-		btnCancel.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		JLabel btnCancel = new JLabel();
+		btnCancel.setIcon(new ImageIcon(cancel_image.getScaledInstance(100, 100, Image.SCALE_FAST)));
+		btnCancel.addMouseListener(new MouseListener (){
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
 				Mainframe.switchContentPane();
 			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
 		});
 		btnCancel.setFont(new Font("Swis721 WGL4 BT", Font.ITALIC, 20));
-		btnCancel.setBounds(21, 26, 114, 37);
+		btnCancel.setBounds(20, 11, 116, 94);
 		contentPane.add(btnCancel);
 		
 		
