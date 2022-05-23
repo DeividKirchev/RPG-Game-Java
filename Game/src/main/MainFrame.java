@@ -110,8 +110,7 @@ public class MainFrame extends JFrame {
 		player.setExtraArmor(Backpack.getItemArmor());
 		player.setExtraHealth(Backpack.getItemHealth());
 		player.setExtraDamage(Backpack.getItemDamage());
-		lblHealth_Current
-				.setText(Integer.toString(player.current_Health()) + " / " + Integer.toString(player.Health()));
+		lblHealth_Current.setText(Integer.toString(player.current_Health()) + " / " + Integer.toString(player.Health()));
 		lblArmor_Current.setText(Integer.toString(player.Armor()));
 		lblDamage_Current.setText(Integer.toString(player.Damage()));
 	}

@@ -96,6 +96,7 @@ public abstract class Champion {
 	}
 	public void setExtraHealth(int extraHealth) {
 		this.extraHealth = extraHealth;
+		if(this.current_Health()>this.Health())this.setCurrent_Health(this.Health());
 	}
 	public int getExtraSpeed() {
 		return extraSpeed;
