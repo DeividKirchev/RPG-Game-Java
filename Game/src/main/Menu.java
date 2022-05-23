@@ -136,14 +136,19 @@ public class Menu extends JFrame {
 		lblNewLabel.setBounds(363, 147, 177, 74);
 		contentPane.add(lblNewLabel);
 		
-		
+		BufferedImage BG = null;
+		try {
+			BG = ImageIO.read(new File(filePath+"menu_BG.jpg"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		JLabel background;
 		contentPane.setLayout(null);
 		background = new JLabel();
 		background.setLocation(0,0);
 		background.setFocusable(false);
 		background.setSize(new Dimension(924, 687));
-		background.setIcon(new ImageIcon(pic.menuBG.getScaledInstance(this.getSize().width, this.getSize().height,Image.SCALE_FAST)));
+		background.setIcon(new ImageIcon(BG.getScaledInstance(this.getSize().width, this.getSize().height,Image.SCALE_FAST)));
 		background.setOpaque(false);
 		contentPane.add(background);
 	}
