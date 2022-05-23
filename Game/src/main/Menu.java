@@ -40,6 +40,16 @@ public class Menu extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
+		JButton btnCancel = new JButton("Cancel");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Mainframe.switchContentPane();
+			}
+		});
+		btnCancel.setFont(new Font("Swis721 WGL4 BT", Font.ITALIC, 20));
+		btnCancel.setBounds(21, 26, 114, 37);
+		contentPane.add(btnCancel);
+		
 		
 		JButton btnSettings = new JButton("Settings");
 		btnSettings.setFocusable(false);
