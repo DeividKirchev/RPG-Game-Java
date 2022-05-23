@@ -2,7 +2,6 @@ package main;
 
 import java.awt.Dimension;
 import java.awt.Image;
-
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -36,11 +35,16 @@ public class Menu extends JFrame {
 	{
 		if(e.getKeyCode() == KeyEvent.VK_ESCAPE) Mainframe.switchContentPane();
 	}
-	
 	public Menu(MainFrame mainframe) {
 		BufferedImage cancel_image = null;
 		try {
 			cancel_image = ImageIO.read(new File(filePath+"cancel_button.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		BufferedImage cancel_image_clicked = null;
+		try {
+			cancel_image_clicked = ImageIO.read(new File(filePath+"cancel_button_clicked.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -50,8 +54,8 @@ public class Menu extends JFrame {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-					
-				
+		final ImageIcon Cancel_Button_Clicked_Icon = (new ImageIcon(cancel_image_clicked.getScaledInstance(100, 100, Image.SCALE_FAST)));
+		final ImageIcon Cancel_Button_Icon = (new ImageIcon(cancel_image.getScaledInstance(100, 100, Image.SCALE_FAST)));	
 				
 		setFocusable(false);
 		Mainframe = mainframe;
@@ -62,7 +66,7 @@ public class Menu extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		btnCancel.setIcon(new ImageIcon(cancel_image.getScaledInstance(100, 100, Image.SCALE_FAST)));
+		btnCancel.setIcon(Cancel_Button_Icon);
 		btnCancel.addMouseListener(new MouseListener (){
 
 			@Override
@@ -73,12 +77,13 @@ public class Menu extends JFrame {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+				btnCancel.setIcon(Cancel_Button_Clicked_Icon);
 			}
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
+				btnCancel.setIcon(Cancel_Button_Icon);
 				
 			}
 
