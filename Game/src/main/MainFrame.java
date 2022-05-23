@@ -218,6 +218,7 @@ public class MainFrame extends JFrame {
 			return;
 		HideLabels();
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+			timerNPC.stop();
 			contentPane.hide();
 			menu.getContentPane().show();
 			contentPane.show();
@@ -710,6 +711,7 @@ public class MainFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (!player.Alive())
 					return;
+				timerNPC.stop();
 				contentPane.hide();
 				setContentPane(contentPane1);
 				contentPane1.show();

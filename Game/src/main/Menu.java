@@ -43,7 +43,13 @@ public class Menu extends JFrame {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-				
+		BufferedImage menu_text = null;
+		try {
+			menu_text = ImageIO.read(new File(filePath+"menu_text.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+					
 				
 				
 		setFocusable(false);
@@ -129,7 +135,8 @@ public class Menu extends JFrame {
 		btnTutorial.setBounds(387, 237, 133, 50);
 		contentPane.add(btnTutorial);
 		
-		JLabel lblNewLabel = new JLabel("MENU");
+		JLabel lblNewLabel = new JLabel();
+		lblNewLabel.setIcon(new ImageIcon(menu_text.getScaledInstance(200, 100, Image.SCALE_FAST)));
 		lblNewLabel.setFocusable(false);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.ITALIC, 45));
