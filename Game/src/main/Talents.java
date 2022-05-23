@@ -20,6 +20,7 @@ public class Talents extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	public JButton btnBack = new JButton("Back");
     PictureDataBase pic = new PictureDataBase();
 	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -42,11 +43,12 @@ public class Talents extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnBack = new JButton("Back");
+		
 		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mainframe.switchContentPane();
+				System.out.println("here");
 			}
 		});
 		btnBack.setBounds(650, 506, 124, 35);

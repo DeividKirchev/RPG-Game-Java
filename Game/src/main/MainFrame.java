@@ -36,7 +36,6 @@ public class MainFrame extends JFrame {
 	Menu menu = new Menu(this);
 	private JPanel contentPane;
 	private JPanel contentPane1;
-	JButton btnExit;
 	JLabel[][] tiles = new JLabel[MAP_SIZE][MAP_SIZE];
 	Map map = new Map(FolderPath + "TestMap.txt");
 	Backpack backpack = new Backpack();
@@ -68,13 +67,14 @@ public class MainFrame extends JFrame {
 	public JLabel cdAB1 = new JLabel("");
 	public JLabel cdAB2 = new JLabel("");
 	public JLabel cdAB3 = new JLabel("");
-
+	static JLabel lblHealth = new JLabel("Health: ");
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					MainFrame frame = new MainFrame("Warrior", "TestMap.txt");
 					frame.setVisible(true);
+					lblHealth.requestFocusInWindow();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -222,7 +222,7 @@ public class MainFrame extends JFrame {
 			menu.getContentPane().show();
 			contentPane.show();
 			this.setContentPane(menu.getContentPane());
-			menu.btnExit.requestFocusInWindow();
+			menu.btnCancel.requestFocusInWindow();
 		}
 		if (e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W) {
 			if (movedY == 0 && moveY == -5)
@@ -572,7 +572,7 @@ public class MainFrame extends JFrame {
 		menu.getContentPane().hide();
 		this.setContentPane(contentPane);
 		contentPane.show();
-		btnExit.requestFocus();
+		lblHealth.requestFocus();
 		timerNPC.start();
 	}
 	// =======================FRAME=============================
@@ -722,11 +722,10 @@ public class MainFrame extends JFrame {
 		btnTalents.setBounds(626, 377, 130, 46);
 		contentPane.add(btnTalents);
 
-		JLabel lblHealth = new JLabel("Health: ");
 		lblHealth.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblHealth.setBounds(684, 434, 97, 34);
 		contentPane.add(lblHealth);
-
+		
 		JLabel lblArmor = new JLabel("Armor:");
 		lblArmor.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblArmor.setBounds(684, 479, 97, 34);
@@ -749,14 +748,6 @@ public class MainFrame extends JFrame {
 		lblDamage_Current.setBounds(791, 524, 97, 34);
 		contentPane.add(lblDamage_Current);
 
-		btnExit = new JButton("Exit");
-		btnExit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
-			}
-		});
-		btnExit.setBounds(751, 569, 137, 46);
-		contentPane.add(btnExit);
 
 		// ======================CHARACTER===================
 		if (CharacterClass == "Warrior")
@@ -778,8 +769,8 @@ public class MainFrame extends JFrame {
 				pic.MedievalBG.getScaledInstance(this.getSize().width, this.getSize().height, Image.SCALE_FAST)));
 		background.setOpaque(false);
 		contentPane.add(background);
-
-		btnExit.addKeyListener(new KeyAdapter() {
+		
+	    lblHealth.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				try {
@@ -791,6 +782,7 @@ public class MainFrame extends JFrame {
 			}
 		});
 		timerNPC.start();
+
 		// contentPane.hide();
 		// ==================================================
 	}

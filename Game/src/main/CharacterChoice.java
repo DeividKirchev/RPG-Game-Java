@@ -124,18 +124,21 @@ public class CharacterChoice extends JFrame {
 				{
 					mf = new MainFrame("Hunter",map);
 					 mf.setVisible(true);
+					 mf.lblHealth.requestFocusInWindow();
 					 dispose();
 				}
 				if(btnWarrior.isSelected())
 				{
 					mf = new MainFrame("Warrior",map);
 					 mf.setVisible(true);
+					 mf.lblHealth.requestFocusInWindow();
 					 dispose();
 				}
 				if(btnMage.isSelected())
 				{
 					mf = new MainFrame("Mage",map);
 					 mf.setVisible(true);
+					 mf.lblHealth.requestFocusInWindow();
 					 dispose();
 				} 
 				

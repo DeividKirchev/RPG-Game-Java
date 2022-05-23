@@ -31,6 +31,7 @@ public class Menu extends JFrame {
 	private JPanel contentPane;
 	MainFrame Mainframe;
 	public JButton btnExit = new JButton("Exit Game");
+	public JLabel btnCancel = new JLabel();
 	public void CheckPressedKey (KeyEvent e) throws InterruptedException
 	{
 		if(e.getKeyCode() == KeyEvent.VK_ESCAPE) Mainframe.switchContentPane();
@@ -61,7 +62,6 @@ public class Menu extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JLabel btnCancel = new JLabel();
 		btnCancel.setIcon(new ImageIcon(cancel_image.getScaledInstance(100, 100, Image.SCALE_FAST)));
 		btnCancel.addMouseListener(new MouseListener (){
 
@@ -105,6 +105,7 @@ public class Menu extends JFrame {
 		btnSettings.setFont(new Font("Swis721 WGL4 BT", Font.ITALIC, 20));
 		btnSettings.setBounds(387, 298, 133, 50);
 		contentPane.add(btnSettings);
+		btnExit.setFocusable(false);
 		
 	
 		btnExit.addActionListener(new ActionListener() {
@@ -113,7 +114,7 @@ public class Menu extends JFrame {
 			}
 		});
 		
-		btnExit.addKeyListener(new KeyAdapter() {
+		btnCancel.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				try {
@@ -158,5 +159,6 @@ public class Menu extends JFrame {
 		background.setIcon(new ImageIcon(BG.getScaledInstance(this.getSize().width, this.getSize().height,Image.SCALE_FAST)));
 		background.setOpaque(false);
 		contentPane.add(background);
+		if(btnCancel.hasFocus())System.out.println("YES");
 	}
 }
