@@ -10,10 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import basics.PictureDataBase;
-import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
@@ -21,7 +19,6 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.awt.event.ActionEvent;
 
 public class Menu extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -29,7 +26,7 @@ public class Menu extends JFrame {
 	PictureDataBase pic = new PictureDataBase();
 	private JPanel contentPane;
 	MainFrame Mainframe;
-	public JButton btnExit = new JButton("Exit Game");
+	public JLabel btnExit = new JLabel();
 	public JLabel btnCancel = new JLabel();
 	public void CheckPressedKey (KeyEvent e) throws InterruptedException
 	{
@@ -48,15 +45,56 @@ public class Menu extends JFrame {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		BufferedImage exit_image = null;
+		try {
+			exit_image = ImageIO.read(new File(filePath+"exit_button.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		BufferedImage exit_image_clicked = null;
+		try {
+			exit_image_clicked = ImageIO.read(new File(filePath+"exit_button_clicked.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		BufferedImage tutorial_image = null;
+		try {
+			tutorial_image = ImageIO.read(new File(filePath+"tutorial_button.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		BufferedImage tutorial_image_clicked = null;
+		try {
+			tutorial_image_clicked = ImageIO.read(new File(filePath+"tutorial_button_clicked.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		BufferedImage settings_image = null;
+		try {
+			settings_image = ImageIO.read(new File(filePath+"settings_button.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		BufferedImage settings_image_clicked = null;
+		try {
+			settings_image_clicked = ImageIO.read(new File(filePath+"settings_button_clicked.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		BufferedImage menu_text = null;
 		try {
 			menu_text = ImageIO.read(new File(filePath+"menu_text.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		final ImageIcon Cancel_Button_Clicked_Icon = (new ImageIcon(cancel_image_clicked.getScaledInstance(100, 100, Image.SCALE_FAST)));
-		final ImageIcon Cancel_Button_Icon = (new ImageIcon(cancel_image.getScaledInstance(100, 100, Image.SCALE_FAST)));	
-				
+		final ImageIcon Cancel_Button_Clicked_Icon = (new ImageIcon(cancel_image_clicked.getScaledInstance(125, 125, Image.SCALE_FAST)));
+		final ImageIcon Cancel_Button_Icon = (new ImageIcon(cancel_image.getScaledInstance(125, 125, Image.SCALE_FAST)));	
+		final ImageIcon Exit_Button_Clicked_Icon = (new ImageIcon(exit_image_clicked.getScaledInstance(125, 125, Image.SCALE_FAST)));
+		final ImageIcon Exit_Button_Icon = (new ImageIcon(exit_image.getScaledInstance(125, 125, Image.SCALE_FAST)));	
+		final ImageIcon Tutorial_Button_Clicked_Icon = (new ImageIcon(tutorial_image_clicked.getScaledInstance(125, 125, Image.SCALE_FAST)));
+		final ImageIcon Tutorial_Button_Icon = (new ImageIcon(tutorial_image.getScaledInstance(125, 125, Image.SCALE_FAST)));	
+		final ImageIcon Settings_Button_Clicked_Icon = (new ImageIcon(settings_image_clicked.getScaledInstance(125, 125, Image.SCALE_FAST)));
+		final ImageIcon Settings_Button_Icon = (new ImageIcon(settings_image.getScaledInstance(125, 125, Image.SCALE_FAST)));	
 		setFocusable(false);
 		Mainframe = mainframe;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -105,18 +143,78 @@ public class Menu extends JFrame {
 		contentPane.add(btnCancel);
 		
 		
-		JButton btnSettings = new JButton("Settings");
+		JLabel btnSettings = new JLabel();
+		btnSettings.setIcon(Settings_Button_Icon);
+		btnSettings.addMouseListener(new MouseListener (){
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				btnSettings.setIcon(Settings_Button_Clicked_Icon);
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				btnSettings.setIcon(Settings_Button_Icon);
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+		});
 		btnSettings.setFocusable(false);
 		btnSettings.setFont(new Font("Swis721 WGL4 BT", Font.ITALIC, 20));
-		btnSettings.setBounds(387, 298, 133, 50);
+		btnSettings.setBounds(398, 339, 116, 94);
 		contentPane.add(btnSettings);
-		btnExit.setFocusable(false);
 		
-	
-		btnExit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btnExit.setFocusable(false);
+		btnExit.addMouseListener(new MouseListener (){
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
 				System.exit(0);
 			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				btnExit.setIcon(Exit_Button_Clicked_Icon);
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				btnExit.setIcon(Exit_Button_Icon);
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
 		});
 		
 		btnCancel.addKeyListener(new KeyAdapter() {
@@ -130,15 +228,48 @@ public class Menu extends JFrame {
 				}
 			}
 		});
-		
+		btnExit.setIcon(Exit_Button_Icon);
 		btnExit.setFont(new Font("Swis721 WGL4 BT", Font.ITALIC, 20));
-		btnExit.setBounds(387, 359, 133, 50);
+		btnExit.setBounds(398, 428, 116, 94);
 		contentPane.add(btnExit);
 		
-		JButton btnTutorial = new JButton("Tutorial");
+		JLabel btnTutorial = new JLabel();
+		btnTutorial.setIcon(Tutorial_Button_Icon);
+		btnTutorial.addMouseListener(new MouseListener (){
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				btnTutorial.setIcon(Tutorial_Button_Clicked_Icon);
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				btnTutorial.setIcon(Tutorial_Button_Icon);
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+		});
 		btnTutorial.setFocusable(false);
 		btnTutorial.setFont(new Font("Swis721 WGL4 BT", Font.ITALIC, 20));
-		btnTutorial.setBounds(387, 237, 133, 50);
+		btnTutorial.setBounds(398, 237, 116, 94);
 		contentPane.add(btnTutorial);
 		
 		JLabel lblNewLabel = new JLabel();
@@ -146,7 +277,7 @@ public class Menu extends JFrame {
 		lblNewLabel.setFocusable(false);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.ITALIC, 45));
-		lblNewLabel.setBounds(363, 147, 177, 74);
+		lblNewLabel.setBounds(366, 141, 177, 74);
 		contentPane.add(lblNewLabel);
 		
 		BufferedImage BG = null;
