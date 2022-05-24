@@ -47,6 +47,9 @@ public class PictureDataBase
 	public BufferedImage menuBG;
 	public BufferedImage backpack;
 	public BufferedImage warrior_trans;
+	public BufferedImage warrior_trans1;
+	public BufferedImage mage_trans;
+	public BufferedImage hunter_trans;
 	public BufferedImage health_potion;
 	
 	public ImageIcon sword_effect = new ImageIcon(System.getProperty("user.dir")+"\\src\\basics\\sword_slash1.gif");
@@ -235,7 +238,12 @@ try {
 	e.printStackTrace();
 }
 try {
-	warrior_trans= ImageIO.read(new File(DefaultFilePath+"\\src\\basics\\warrior_transparent1.png"));
+	warrior_trans1= ImageIO.read(new File(DefaultFilePath+"\\src\\basics\\warrior_transparent1.png"));
+} catch (IOException e) {
+	e.printStackTrace();
+}
+try {
+	warrior_trans= ImageIO.read(new File(DefaultFilePath+"\\src\\basics\\warrior_transparent.png"));
 } catch (IOException e) {
 	e.printStackTrace();
 }
@@ -271,14 +279,24 @@ try {
 } catch (IOException e) {
 	e.printStackTrace();
 }
+try {
+	hunter_trans = ImageIO.read(new File(DefaultFilePath+"\\src\\basics\\hunter.png"));
+} catch (IOException e) {
+	e.printStackTrace();
+}
+try {
+	mage_trans = ImageIO.read(new File(DefaultFilePath+"\\src\\basics\\mage.png"));
+} catch (IOException e) {
+	e.printStackTrace();
+}
 //sword_effect = new ImageIcon(newimg);
 	}
 	
 	public BufferedImage getPlayerImg(String s)
 	{
-		if(s=="Warrior") return player_Warrior;
-		if(s=="Mage") return player_Mage;
-		if(s=="Hunter") return player_Hunter;
+		if(s=="Warrior") return warrior_trans;
+		if(s=="Mage") return mage_trans;
+		if(s=="Hunter") return hunter_trans;
 		return null;
 	}
 }

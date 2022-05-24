@@ -579,7 +579,7 @@ public class MainFrame extends JFrame {
 
 	public MainFrame(String CharacterClass, String Map) {
 
-		this.setIconImage(pic.warrior_trans);
+		this.setIconImage(pic.warrior_trans1);
 		map = new Map(FolderPath + Map);
 		// backpack.hide();
 		MainFrame.CharacterClass = CharacterClass;

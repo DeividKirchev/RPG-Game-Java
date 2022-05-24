@@ -44,7 +44,7 @@ public class CharacterChoice extends JFrame {
 		});
 	}
 	public CharacterChoice() {
-		this.setIconImage(pic.warrior_trans);
+		this.setIconImage(pic.warrior_trans1);
 		setTitle("Game");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -73,7 +73,7 @@ public class CharacterChoice extends JFrame {
 		contentPane.add(btnHunter);
 		
 		JLabel lblPic = new JLabel("");
-		lblPic.setBounds(40, 40, 400, 400);
+		lblPic.setBounds(10, 82, 450, 450);
 		contentPane.add(lblPic);
 		
 		JButton btnSelect = new JButton("Select");
@@ -113,7 +113,7 @@ public class CharacterChoice extends JFrame {
                 btnHunter.setSelected(false);
                 btnMage.setSelected(false);
                 abstractButton.setSelected(true);
-                lblPic.setIcon(new ImageIcon(pic.getPlayerImg(abstractButton.getText()).getScaledInstance(400,400,Image.SCALE_FAST)));
+                lblPic.setIcon(new ImageIcon(pic.getPlayerImg(abstractButton.getText()).getScaledInstance(450,450,Image.SCALE_FAST)));
             }
         };
         btnMage.addActionListener(actionListener);
@@ -159,7 +159,7 @@ public class CharacterChoice extends JFrame {
         JLabel background = new JLabel();
 		background.setLocation(0, 0);
 		background.setFocusable(false);
-		background.setSize(new Dimension(924, 687));
+		background.setSize(new Dimension(this.getSize().width, this.getSize().height));
 		background.setIcon(new ImageIcon(bg_image.getScaledInstance(this.getSize().width, this.getSize().height, Image.SCALE_FAST)));
 		background.setOpaque(false);
 		contentPane.add(background);
