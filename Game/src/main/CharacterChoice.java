@@ -149,7 +149,7 @@ public class CharacterChoice extends JFrame {
 			}
 		});
         btnWarrior.doClick();
-        
+        list.setSelectedIndex(0);
         BufferedImage bg_image = null;
 		try {
 			bg_image = ImageIO.read(new File(System.getProperty("user.dir")+"\\src\\basics\\armory_BG.jpg"));
