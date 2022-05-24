@@ -1,8 +1,10 @@
 package main;
 
 
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
+import javax.imageio.ImageIO;
 import javax.swing.AbstractButton;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -14,8 +16,10 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FilenameFilter;
+import java.io.IOException;
 
 import javax.swing.JLabel;
 import basics.PictureDataBase;
@@ -145,5 +149,19 @@ public class CharacterChoice extends JFrame {
 			}
 		});
         btnWarrior.doClick();
+        
+        BufferedImage bg_image = null;
+		try {
+			bg_image = ImageIO.read(new File(System.getProperty("user.dir")+"\\src\\basics\\armory_BG.jpg"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+        JLabel background = new JLabel();
+		background.setLocation(0, 0);
+		background.setFocusable(false);
+		background.setSize(new Dimension(924, 687));
+		background.setIcon(new ImageIcon(bg_image.getScaledInstance(this.getSize().width, this.getSize().height, Image.SCALE_FAST)));
+		background.setOpaque(false);
+		contentPane.add(background);
 	}
 }
