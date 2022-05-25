@@ -84,7 +84,77 @@ public class MainFrame extends JFrame {
 				 JLabel tmp = new JLabel();
 				 tmp.setText("n");
 				 tmp.setForeground(new Color(0, 0, 0, 0));
-				 tmp.addMouseListener(new MouseAdapter()
+				 if((i+1)%11==0 || (i+1)%11==1 || (j+1)%11==0 || (j+1)%11==1)
+				 {
+					 tmp.addMouseListener(new MouseAdapter()
+					 {
+						 public void mouseClicked(MouseEvent e)
+						 {
+							 if(Selected == "Grass")
+							 {
+								 tmp.setIcon(new ImageIcon(pic.Grass.getScaledInstance(25, 25, Image.SCALE_FAST)));
+								 tmp.setText("n");
+							 }
+							 if(Selected == "Tree") 
+							 {
+								 tmp.setIcon(new ImageIcon(pic.Tree.getScaledInstance(25, 25, Image.SCALE_FAST)));
+								 tmp.setText("t");
+							 }
+							 if(Selected == "Warrior") 
+							 {
+							
+								 tmp.setIcon(new ImageIcon(pic.Warrior.getScaledInstance(25, 25, Image.SCALE_FAST)));	
+								 tmp.setText("w");
+							 }
+							 if(Selected == "Chest") 
+							 {
+								 tmp.setIcon(new ImageIcon(pic.Chest.getScaledInstance(25, 25, Image.SCALE_FAST)));
+								 tmp.setText("c");
+							 }
+							 if(Selected == "Start")
+							 {
+								 tmp.setIcon(new ImageIcon(pic.player_Warrior.getScaledInstance(25, 25, Image.SCALE_FAST)));
+								 tmp.setText("|");
+								 if(lblStart !=null) 
+								 {
+								 lblStart.setIcon(new ImageIcon(pic.Grass.getScaledInstance(25, 25, Image.SCALE_FAST)));
+								 lblStart.setText("t");
+								 }
+								 lblStart = tmp;
+							 }
+							 repaint();
+						 }
+						 public void mouseEntered(MouseEvent e)
+						 {
+							 if(e.isShiftDown()) {
+								 if(Selected == "Grass")
+								 {
+									 tmp.setIcon(new ImageIcon(pic.Grass.getScaledInstance(25, 25, Image.SCALE_FAST)));
+									 tmp.setText("n");
+								 }
+								 if(Selected == "Tree") 
+								 {
+									 tmp.setIcon(new ImageIcon(pic.Tree.getScaledInstance(25, 25, Image.SCALE_FAST)));
+									 tmp.setText("t");
+								 }
+								 if(Selected == "Warrior") 
+								 {
+								
+									 tmp.setIcon(new ImageIcon(pic.Warrior.getScaledInstance(25, 25, Image.SCALE_FAST)));	
+									 tmp.setText("w");
+								 }
+								 if(Selected == "Chest") 
+								 {
+									 tmp.setIcon(new ImageIcon(pic.Chest.getScaledInstance(25, 25, Image.SCALE_FAST)));
+									 tmp.setText("c");
+								 }
+								 repaint();
+						                    }
+						 }
+						 
+					 });
+				 }
+				 else tmp.addMouseListener(new MouseAdapter()
 				 {
 					 public void mouseClicked(MouseEvent e)
 					 {
@@ -147,6 +217,7 @@ public class MainFrame extends JFrame {
 							 }
 					                    }
 					 }
+					 
 				 });
 				 editor_map[i][j]=tmp;
 				 editor_map[i][j].setBounds(i*25+10, j*25+10, 25, 25);
