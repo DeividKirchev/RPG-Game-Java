@@ -2,10 +2,15 @@ package main;
 
 import java.awt.EventQueue;
 import java.awt.Image;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -14,8 +19,9 @@ import loot.Item;
 
 import javax.swing.JLabel;
 import javax.swing.JEditorPane;
+import java.awt.Dimension;
 
-public class Backpack extends JFrame {
+public class Backpack extends JInternalFrame {
 	private static final long serialVersionUID = 1L;
 	
 	private JPanel contentPane;
@@ -46,6 +52,8 @@ public class Backpack extends JFrame {
 		@Override
 		public void mousePressed(MouseEvent e) 
 		{
+			MainFrame.lblHealth.requestFocusInWindow();
+			
 			if(!MainFrame.player.Alive())return;
 			dragging = true;
 			swap = null;
@@ -751,13 +759,18 @@ public class Backpack extends JFrame {
 	    inventory_items[b]=y;
 	}
 	public Backpack() {
-		this.setIconImage(pic.backpack);
-		setResizable(false);
-		setTitle("Backpack");
+		super("Backpack",
+		          false, //resizable
+		          true, //closable
+		          false, //maximizable
+		          false);
+		//System.out.print("HERE");
+		this.setFrameIcon(new ImageIcon (pic.backpack.getScaledInstance(20, 20, Image.SCALE_FAST)));
+		
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 631, 356);
+		setBounds(100, 100, 631, 247);
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		//contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
@@ -794,12 +807,29 @@ public class Backpack extends JFrame {
 		setInventory();
 		//===========================BACKGROUND=======================
 		JLabel background = new JLabel();
+		background.setLocation(0, 0);
 		background.setFocusable(false);
-		background.setSize(this.getSize());
+		background.setSize(new Dimension(this.getSize().width, this.getSize().height));
 		background.setIcon(new ImageIcon(pic.LeatherBG.getScaledInstance(this.getSize().width, this.getSize().height,Image.SCALE_FAST)));
 		background.setOpaque(false);
 		contentPane.add(background);
 		
 		//==================================================
+		
+		addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentMoved(final ComponentEvent e) {
+            	MainFrame.lblHealth.requestFocusInWindow();
+            }
+            
+            public void componentHidden(final ComponentEvent e)
+            {
+            	MainFrame.lblHealth.requestFocusInWindow();
+            }
+            public void componentShown(final ComponentEvent e)
+            {
+            	MainFrame.lblHealth.requestFocusInWindow();
+            }
+        });
 	}
 }

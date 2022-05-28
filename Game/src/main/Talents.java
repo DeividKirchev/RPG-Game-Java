@@ -48,7 +48,7 @@ public class Talents extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mainframe.switchContentPane();
-				System.out.println("here");
+				//System.out.println("here");
 			}
 		});
 		btnBack.setBounds(650, 506, 124, 35);

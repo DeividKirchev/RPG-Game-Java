@@ -10,6 +10,7 @@ import java.util.Random;
 
 import javax.swing.Timer;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -539,6 +540,7 @@ public class MainFrame extends JFrame {
 		lblTargetHealthLBL.setVisible(true);
 		lblTargetHealth.setText(Integer.toString(map.getWarrior(x, y).current_Health()));
 		lblTargetHealth.setVisible(true);
+		backpack.toFront();
 	}
 
 	private void untarget() {
@@ -578,7 +580,6 @@ public class MainFrame extends JFrame {
 	// =======================FRAME=============================
 
 	public MainFrame(String CharacterClass, String Map) {
-
 		this.setIconImage(pic.warrior_trans1);
 		map = new Map(FolderPath + Map);
 		// backpack.hide();
@@ -611,7 +612,7 @@ public class MainFrame extends JFrame {
 		contentPane1.setBorder(new EmptyBorder(5, 5, 5, 5));
 		// setContentPane(contentPane1);
 		contentPane1.setLayout(null);
-
+		add(backpack);
 		this.addMouseListener(new MouseListener() {
 			public void mouseClicked(MouseEvent e) {
 
@@ -691,13 +692,19 @@ public class MainFrame extends JFrame {
 
 		lblTarget.setBounds(773, 79, 100, 100);
 		contentPane.add(lblTarget);
-
+		
 		JButton btnBackpack = new JButton("Backpack");
 		btnBackpack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!player.Alive())
 					return;
+				if(backpack.isVisible())backpack.hide();
+				else {
 				backpack.show();
+				backpack.toFront();
+				
+				}
+				lblHealth.requestFocusInWindow();
 			}
 		});
 		btnBackpack.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -710,6 +717,7 @@ public class MainFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (!player.Alive())
 					return;
+				
 				timerNPC.stop();
 				contentPane.hide();
 				setContentPane(contentPane1);
