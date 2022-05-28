@@ -7,13 +7,10 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
 import basics.PictureDataBase;
 import loot.Item;
 
@@ -652,7 +649,7 @@ public class Backpack extends JInternalFrame {
 		       {
 			inventory[i*5+j] = new JLabel();
 			contentPane.add(inventory[i*5+j]);
-			inventory[i*5+j].setBounds((j+5)*60,i*60+20,50,50);
+			inventory[i*5+j].setBounds((j+4)*60,i*60+20,50,50);
 			inventory[i*5+j].setIcon(new ImageIcon(pic.board.getScaledInstance(50, 50, Image.SCALE_FAST)));
 			inventory[i*5+j].addMouseListener(a);
 			inventory[i*5+j].setName("inv"+Integer.toString(i*5+j));
@@ -768,7 +765,7 @@ public class Backpack extends JInternalFrame {
 		this.setFrameIcon(new ImageIcon (pic.backpack.getScaledInstance(20, 20, Image.SCALE_FAST)));
 		
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 631, 247);
+		setBounds(100, 100, 551, 247);
 		contentPane = new JPanel();
 		//contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -782,26 +779,26 @@ public class Backpack extends JInternalFrame {
 		contentPane.add(paneStats);
 		
 	
-		lblHelmet.setBounds(this.getWidth()-8*60-20-70,20,50,50);
+		lblHelmet.setBounds(60+20,20,50,50);
 		contentPane.add(lblHelmet);
 		
 		
-		lblChest.setBounds(this.getWidth()-8*60-20-70,60+20,50,50);
+		lblChest.setBounds(60+20,60+20,50,50);
 		contentPane.add(lblChest);
 		
 		
-		lblWeaponLeft.setBounds(this.getWidth()-9*60-20-70,60+20,50,50);
+		lblWeaponLeft.setBounds(20,60+20,50,50);
 		contentPane.add(lblWeaponLeft);
 		
 		
-		lblWeaponRight.setBounds(this.getWidth()-7*60-20-70,60+20,50,50);
+		lblWeaponRight.setBounds(2*60+20,60+20,50,50);
 		contentPane.add(lblWeaponRight);
 		
 		
-		lblLegs.setBounds(this.getWidth()-8*60-20-70,2*60+20,50,50);
+		lblLegs.setBounds(60+20,2*60+20,50,50);
 		contentPane.add(lblLegs);
 		
-		lblExtra.setBounds(this.getWidth()-9*60-20-70,2*60+20,50,50);
+		lblExtra.setBounds(20,2*60+20,50,50);
 		contentPane.add(lblExtra);
 		
 		setInventory();

@@ -10,7 +10,6 @@ import java.util.Random;
 
 import javax.swing.Timer;
 import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -19,8 +18,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.awt.event.ActionEvent;
 import Champions.*;
@@ -613,7 +612,7 @@ public class MainFrame extends JFrame {
 		// setContentPane(contentPane1);
 		contentPane1.setLayout(null);
 		add(backpack);
-		this.addMouseListener(new MouseListener() {
+		this.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 
 				if (player.Alive() == false)
@@ -634,25 +633,7 @@ public class MainFrame extends JFrame {
 				target(x + movedX, y + movedY);
 			}
 
-			@Override
-			public void mousePressed(MouseEvent e) {
 
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
-
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-
-			}
 		});
 		// ============================================================================
 		ActionListener player_dmgTaken = new ActionListener() {
