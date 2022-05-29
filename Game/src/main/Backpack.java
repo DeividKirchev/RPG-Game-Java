@@ -114,7 +114,7 @@ public class Backpack extends JInternalFrame {
 			{ 
 				for(int j=0;j<=4;j++)
 			{
-				if(x==j+5 && y == i) l = inventory[i*5+j];
+				if(x==j+4 && y == i) l = inventory[i*5+j];
 			}
 			}
 			
@@ -402,7 +402,7 @@ public class Backpack extends JInternalFrame {
 				//System.out.println(l.getName());
 				if(l.getName() == lblExtra.getName())
 				{
-					if(itemExtra != null)showStats(itemExtra,l.getX()+l.getWidth(),l.getY()+l.getHeight());
+					if(itemExtra != null)showStats(itemExtra,l.getX()+l.getWidth(),l.getY()+l.getHeight()-102);
 				}
 			if(l.getName() == lblChest.getName())
 				{
@@ -414,7 +414,7 @@ public class Backpack extends JInternalFrame {
 				}
 			if(l.getName() == lblLegs.getName())
 				{
-				if(itemLegs != null)showStats(itemLegs,l.getX()+l.getWidth(),l.getY()+l.getHeight());
+				if(itemLegs != null)showStats(itemLegs,l.getX()+l.getWidth(),l.getY()+l.getHeight()-102);
 				}
 			if(l.getName() == lblWeaponLeft.getName())
 				{
@@ -424,11 +424,19 @@ public class Backpack extends JInternalFrame {
 				{
 				if(itemWeaponRight != null)showStats(itemWeaponRight,l.getX()+l.getWidth(),l.getY()+l.getHeight());
 				}
-			    for(int i=0;i<15;i++)
+			    for(int i=0;i<10;i++)
 			     {
-				if(l.getName() == inventory[i].getName())
+				    if(l.getName() == inventory[i].getName())
 					{
 					if(inventory_items[i] != null)showStats(inventory_items[i],l.getX()+l.getWidth(),l.getY()+l.getHeight());
+					}
+				
+		          }
+			    for(int i=10;i<15;i++)
+			     {
+				    if(l.getName() == inventory[i].getName())
+					{
+					if(inventory_items[i] != null)showStats(inventory_items[i],l.getX()+l.getWidth(),l.getY()+l.getHeight()-102);
 					}
 				
 		          }

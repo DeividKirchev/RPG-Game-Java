@@ -48,7 +48,7 @@ public class MainFrame extends JFrame {
 	int targetX = 0, targetY = 0;
 	NormalChest nc = new NormalChest();
 	static String CharacterClass;
-
+	JButton btnBackpack = new JButton("Backpack");
 	Timer timerDMG;
 	Timer timerNPC;
 	public static BufferedImage playerImg;
@@ -212,7 +212,7 @@ public class MainFrame extends JFrame {
 	}
 
 	// ====================PRESSED KEY====================
-	public void CheckPressedKey(KeyEvent e) throws InterruptedException {
+	public void CheckPressedKey(KeyEvent e) {
 		if (player.Alive() == false)
 			return;
 		HideLabels();
@@ -224,6 +224,7 @@ public class MainFrame extends JFrame {
 			this.setContentPane(menu.getContentPane());
 			menu.btnCancel.requestFocusInWindow();
 		}
+		if (e.getKeyCode() == KeyEvent.VK_B)btnBackpack.doClick();
 		if (e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W) {
 			if (movedY == 0 && moveY == -5)
 				return;
@@ -390,7 +391,7 @@ public class MainFrame extends JFrame {
 	// ========================================================
 	// =========================================================================================================Move
 	// NPCs======================================
-	private void moveNPC() throws InterruptedException {
+	private void moveNPC() {
 
 		// ------------------ Can be optimized - lower range
 		Boolean[][] moved = new Boolean[map.getSizeX() + 11][map.getSizeY() + 11];
@@ -644,11 +645,9 @@ public class MainFrame extends JFrame {
 		};
 		ActionListener npc_mover = new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				try {
+				
 					moveNPC();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+
 			}
 		};
 		timerDMG = new Timer(500, player_dmgTaken);
@@ -674,7 +673,7 @@ public class MainFrame extends JFrame {
 		lblTarget.setBounds(773, 79, 100, 100);
 		contentPane.add(lblTarget);
 		
-		JButton btnBackpack = new JButton("Backpack");
+		
 		btnBackpack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!player.Alive())
@@ -762,12 +761,7 @@ public class MainFrame extends JFrame {
 	    lblHealth.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				try {
 					CheckPressedKey(e);
-				} catch (InterruptedException e1) {
-
-					e1.printStackTrace();
-				}
 			}
 		});
 		timerNPC.start();
