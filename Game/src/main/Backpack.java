@@ -402,7 +402,7 @@ public class Backpack extends JInternalFrame {
 				//System.out.println(l.getName());
 				if(l.getName() == lblExtra.getName())
 				{
-					if(itemExtra != null)showStats(itemExtra,l.getX()+l.getWidth(),l.getY()+l.getHeight()-102);
+					if(itemExtra != null)showStats(itemExtra,l.getX()+l.getWidth(),l.getY()+l.getHeight()-175);
 				}
 			if(l.getName() == lblChest.getName())
 				{
@@ -414,7 +414,7 @@ public class Backpack extends JInternalFrame {
 				}
 			if(l.getName() == lblLegs.getName())
 				{
-				if(itemLegs != null)showStats(itemLegs,l.getX()+l.getWidth(),l.getY()+l.getHeight()-102);
+				if(itemLegs != null)showStats(itemLegs,l.getX()+l.getWidth(),l.getY()+l.getHeight()-175);
 				}
 			if(l.getName() == lblWeaponLeft.getName())
 				{
@@ -428,18 +428,31 @@ public class Backpack extends JInternalFrame {
 			     {
 				    if(l.getName() == inventory[i].getName())
 					{
-					if(inventory_items[i] != null)showStats(inventory_items[i],l.getX()+l.getWidth(),l.getY()+l.getHeight());
+					if(inventory_items[i] != null)
+						{
+						if((i+1)%5==4 || (i+1)%5==0)
+						showStats(inventory_items[i],l.getX()-125,l.getY()+l.getHeight());
+						else showStats(inventory_items[i],l.getX()+l.getWidth(),l.getY()+l.getHeight());
+						}
 					}
 				
 		          }
-			    for(int i=10;i<15;i++)
+			    for(int i=10;i<13;i++)
 			     {
 				    if(l.getName() == inventory[i].getName())
 					{
-					if(inventory_items[i] != null)showStats(inventory_items[i],l.getX()+l.getWidth(),l.getY()+l.getHeight()-102);
+					if(inventory_items[i] != null)showStats(inventory_items[i],l.getX()+l.getWidth(),l.getY()+l.getHeight()-175);
 					}
 				
 		          }
+			    if(l.getName() == inventory[13].getName())
+				{
+				if(inventory_items[13] != null)showStats(inventory_items[13],l.getX()-125,l.getY()+l.getHeight()-175);
+				}
+			    if(l.getName() == inventory[14].getName())
+				{
+				if(inventory_items[14] != null)showStats(inventory_items[14],l.getX()-125,l.getY()+l.getHeight()-175);
+				}
 		}
 
 		@Override
