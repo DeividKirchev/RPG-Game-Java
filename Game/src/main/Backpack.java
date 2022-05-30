@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -11,6 +13,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+
 import basics.PictureDataBase;
 import loot.Item;
 
@@ -43,7 +47,7 @@ public class Backpack extends JInternalFrame {
 	JLabel[] inventory = new JLabel[15];
 	Boolean dragging = false;
 	static Item[] inventory_items = new Item[15];
-	
+	public JLabel background = new JLabel();
 	    MouseAdapter a = new MouseAdapter()
 			{
 		@Override
@@ -682,6 +686,7 @@ public class Backpack extends JInternalFrame {
 		lblLegs.setIcon(new ImageIcon(pic.boardLegs.getScaledInstance(50, 50, Image.SCALE_FAST)));
 		lblChest.setIcon(new ImageIcon(pic.boardChest.getScaledInstance(50, 50, Image.SCALE_FAST)));
 		lblHelmet.setIcon(new ImageIcon(pic.boardHelmet.getScaledInstance(50, 50, Image.SCALE_FAST)));
+		lblWeaponRight.setFocusable(false);
 		lblWeaponRight.setIcon(new ImageIcon(pic.boardWeaponR.getScaledInstance(50, 50, Image.SCALE_FAST)));
 		lblWeaponLeft.setIcon(new ImageIcon(pic.boardWeaponL.getScaledInstance(50, 50, Image.SCALE_FAST)));
 		//------------------------------------------------------------------------------------------------
@@ -782,9 +787,10 @@ public class Backpack extends JInternalFrame {
 		          true, //closable
 		          false, //maximizable
 		          false);
+		setFocusable(false);
 		//System.out.print("HERE");
 		this.setFrameIcon(new ImageIcon (pic.backpack.getScaledInstance(20, 20, Image.SCALE_FAST)));
-		
+		((BasicInternalFrameUI) this.getUI()).setNorthPane(null);
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 551, 247);
 		contentPane = new JPanel();
@@ -793,6 +799,7 @@ public class Backpack extends JInternalFrame {
 		contentPane.setLayout(null);
 		
 		 contentPane.add(movingLabel);
+		paneStats.setFocusable(false);
 		
 		
 		paneStats.setVisible(false);
@@ -824,7 +831,7 @@ public class Backpack extends JInternalFrame {
 		
 		setInventory();
 		//===========================BACKGROUND=======================
-		JLabel background = new JLabel();
+
 		background.setLocation(0, 0);
 		background.setFocusable(false);
 		background.setSize(new Dimension(this.getSize().width, this.getSize().height));
@@ -849,5 +856,20 @@ public class Backpack extends JInternalFrame {
             	MainFrame.lblHealth.requestFocusInWindow();
             }
         });
+		this.setBorder(null);
+		MouseAdapter ma = new MouseAdapter()
+		{
+	@Override
+	public void mouseClicked(MouseEvent me)
+	{
+		MainFrame.lblHealth.requestFocusInWindow();
+	}
+	@Override
+	 public void mouseReleased(MouseEvent e) {
+		 MainFrame.lblHealth.requestFocusInWindow();
+	}
+		};
+		this.addMouseListener(ma);
+		background.addMouseListener(ma);
 	}
 }
