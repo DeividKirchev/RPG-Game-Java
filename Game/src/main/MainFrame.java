@@ -613,16 +613,7 @@ public class MainFrame extends JFrame {
 		// setContentPane(contentPane1);
 		contentPane1.setLayout(null);
 		add(backpack);
-		backpack.background.addMouseMotionListener(new MouseAdapter()
-		{
-	    @Override
-	     public void mouseDragged(MouseEvent e) 
-	    {
-		 backpack.setLocation(e.getXOnScreen()-getX(), e.getYOnScreen()-getY()-25);
-		 System.out.println(e.getX()+" "+e.getY());
-		 MainFrame.lblHealth.requestFocusInWindow();
-	    }
-		});
+	
 		
 		this.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {

@@ -32,8 +32,10 @@ public class Backpack extends JInternalFrame {
 	static Item itemWeaponRight;
 	static Item itemWeaponLeft;
 	static Item itemExtra;
+	Boolean dragging_window = false;
 	Item swap1;
 	Item swap2;
+    int locX,locY;
 	JLabel swap;
 	JLabel movingLabel = new JLabel();
 	PictureDataBase pic = new PictureDataBase();
@@ -856,9 +858,18 @@ public class Backpack extends JInternalFrame {
             	MainFrame.lblHealth.requestFocusInWindow();
             }
         });
+		
 		this.setBorder(null);
+		
 		MouseAdapter ma = new MouseAdapter()
 		{
+			@Override
+			public void mousePressed(MouseEvent me)
+			{
+				locX=me.getX();
+				locY=me.getY();
+			}
+			
 	@Override
 	public void mouseClicked(MouseEvent me)
 	{
@@ -869,7 +880,19 @@ public class Backpack extends JInternalFrame {
 		 MainFrame.lblHealth.requestFocusInWindow();
 	}
 		};
+		
 		this.addMouseListener(ma);
 		background.addMouseListener(ma);
+		background.addMouseMotionListener(new MouseAdapter()
+		{
+	    @Override
+	     public void mouseDragged(MouseEvent e) 
+	    {
+		 setLocation(getX()+e.getX()-locX , getY()+e.getY()-locY);
+		 //locX=e.getX();
+		 //locY=e.getY();
+		 MainFrame.lblHealth.requestFocusInWindow();
+	    }
+		});
 	}
 }
