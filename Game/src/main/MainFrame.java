@@ -589,11 +589,12 @@ public class MainFrame extends JFrame {
 		// ======================CONTENT PANE=========================================
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 940, 687);
-
+        
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		add(backpack);
 		cdAB2.setBounds(684, 316, 50, 50);
 
 		contentPane.add(cdAB2);
@@ -612,7 +613,7 @@ public class MainFrame extends JFrame {
 		contentPane1.setBorder(new EmptyBorder(5, 5, 5, 5));
 		// setContentPane(contentPane1);
 		contentPane1.setLayout(null);
-		add(backpack);
+		
 	
 		
 		this.addMouseListener(new MouseAdapter() {
