@@ -55,7 +55,8 @@ public class PictureDataBase
 	public ImageIcon sword_effect = new ImageIcon(System.getProperty("user.dir")+"\\src\\basics\\sword_slash1.gif");
 	public ImageIcon blood_effect = new ImageIcon(System.getProperty("user.dir")+"\\src\\basics\\blood_slash1.gif");
 	public ImageIcon throw_effect = new ImageIcon(System.getProperty("user.dir")+"\\src\\basics\\throw_effect1.gif");
-	
+	public BufferedImage talents_img_pressed;
+	public BufferedImage  talents_img;
 	public BufferedImage sword_hit;
 	public BufferedImage sword_slash;
 	public BufferedImage execute;
@@ -286,6 +287,17 @@ try {
 }
 try {
 	mage_trans = ImageIO.read(new File(DefaultFilePath+"\\src\\basics\\mage.png"));
+} catch (IOException e) {
+	e.printStackTrace();
+}
+try {
+	talents_img_pressed = ImageIO.read(new File(DefaultFilePath+"\\src\\basics\\button_wood_talents_pressed.png"));
+} catch (IOException e) {
+	e.printStackTrace();
+}
+//WARRIOR
+try {
+	talents_img = ImageIO.read(new File(DefaultFilePath+"\\src\\basics\\button_wood_talents.png"));
 } catch (IOException e) {
 	e.printStackTrace();
 }

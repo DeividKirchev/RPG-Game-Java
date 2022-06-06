@@ -594,7 +594,7 @@ public class MainFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		add(backpack);
+		getContentPane().add(backpack);
 		cdAB2.setBounds(684, 316, 50, 50);
 
 		contentPane.add(cdAB2);
@@ -695,22 +695,30 @@ public class MainFrame extends JFrame {
 		btnBackpack.setBounds(773, 377, 130, 46);
 		contentPane.add(btnBackpack);
 		// ----------------------------------------------
-		JButton btnTalents = new JButton("Talents");
-		btnTalents.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		JLabel btnTalents = new JLabel();
+        btnTalents.setBounds(626, 363, 130, 60);
+		btnTalents.setIcon(new ImageIcon(pic.talents_img.getScaledInstance(btnTalents.getWidth(), btnTalents.getHeight(), Image.SCALE_FAST)));
+		btnTalents.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
 				if (!player.Alive())
 					return;
-				
-				timerNPC.stop();
-				contentPane.hide();
-				setContentPane(contentPane1);
-				contentPane1.show();
+				btnTalents.setIcon(new ImageIcon(pic.talents_img_pressed.getScaledInstance(btnTalents.getWidth(), btnTalents.getHeight(), Image.SCALE_FAST)));
 
+			}
+			public void mouseReleased(MouseEvent e) {
+				btnTalents.setIcon(new ImageIcon(pic.talents_img.getScaledInstance(btnTalents.getWidth(), btnTalents.getHeight(), Image.SCALE_FAST)));
+				if (!player.Alive())return;
+				if(e.getX()>0 && e.getX()<btnTalents.getWidth() && e.getY()>0 && e.getY()<btnTalents.getHeight()) {
+					timerNPC.stop();
+					contentPane.hide();
+					setContentPane(contentPane1);
+					contentPane1.show();
+				}
 			}
 		});
 		btnTalents.setFocusable(false);
 		btnTalents.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnTalents.setBounds(626, 377, 130, 46);
+		
 		contentPane.add(btnTalents);
 
 		lblHealth.setFont(new Font("Tahoma", Font.PLAIN, 20));
