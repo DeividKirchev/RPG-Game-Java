@@ -57,6 +57,8 @@ public class PictureDataBase
 	public ImageIcon throw_effect = new ImageIcon(System.getProperty("user.dir")+"\\src\\basics\\throw_effect1.gif");
 	public BufferedImage talents_img_pressed;
 	public BufferedImage  talents_img;
+	public BufferedImage backpack_img_pressed;
+	public BufferedImage  backpack_img;
 	public BufferedImage sword_hit;
 	public BufferedImage sword_slash;
 	public BufferedImage execute;
@@ -298,6 +300,17 @@ try {
 //WARRIOR
 try {
 	talents_img = ImageIO.read(new File(DefaultFilePath+"\\src\\basics\\button_wood_talents.png"));
+} catch (IOException e) {
+	e.printStackTrace();
+}
+try {
+	backpack_img_pressed = ImageIO.read(new File(DefaultFilePath+"\\src\\basics\\button_wood_backpack_pressed.png"));
+} catch (IOException e) {
+	e.printStackTrace();
+}
+//WARRIOR
+try {
+	backpack_img = ImageIO.read(new File(DefaultFilePath+"\\src\\basics\\button_wood_backpack.png"));
 } catch (IOException e) {
 	e.printStackTrace();
 }

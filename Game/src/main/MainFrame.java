@@ -14,7 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -48,7 +47,7 @@ public class MainFrame extends JFrame {
 	int targetX = 0, targetY = 0;
 	NormalChest nc = new NormalChest();
 	static String CharacterClass;
-	JButton btnBackpack = new JButton("Backpack");
+	JLabel btnBackpack = new JLabel();
 	Timer timerDMG;
 	Timer timerNPC;
 	public static BufferedImage playerImg;
@@ -94,7 +93,6 @@ public class MainFrame extends JFrame {
 		setStats();
 
 	}
-
 	// ==================set stats
 	public static void setStats() {
 		if (CharacterClass == "Warrior") {
@@ -224,7 +222,7 @@ public class MainFrame extends JFrame {
 			this.setContentPane(menu.getContentPane());
 			menu.btnCancel.requestFocusInWindow();
 		}
-		if (e.getKeyCode() == KeyEvent.VK_B)btnBackpack.doClick();
+		if (e.getKeyCode() == KeyEvent.VK_B)btnBackpack_press();
 		if (e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W) {
 			if (movedY == 0 && moveY == -5)
 				return;
@@ -364,7 +362,17 @@ public class MainFrame extends JFrame {
 		effect1.setBounds((moveX + 5) * 50 + 50, (moveY + 5) * 50 + 50, 50, 50);
 
 	}
-
+	public void btnBackpack_press()
+	{
+		if(backpack.isVisible())backpack.hide();
+		else 
+		{
+		backpack.show();
+		backpack.toFront();
+		
+		}
+		lblHealth.requestFocusInWindow();
+	}
 	// ========================================================
 	// =================Move map==============================
 	private void moveMap() {
@@ -676,23 +684,25 @@ public class MainFrame extends JFrame {
 		lblTarget.setBounds(773, 79, 100, 100);
 		contentPane.add(lblTarget);
 		
-		
-		btnBackpack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (!player.Alive())
-					return;
-				if(backpack.isVisible())backpack.hide();
-				else {
-				backpack.show();
-				backpack.toFront();
-				
+		btnBackpack.setBounds(780, 363, 130, 60);
+		btnBackpack.setIcon(new ImageIcon(pic.backpack_img.getScaledInstance(btnBackpack.getWidth(), btnBackpack.getHeight(), Image.SCALE_FAST)));
+		btnBackpack.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				if (!player.Alive())return;
+				btnBackpack.setIcon(new ImageIcon(pic.backpack_img_pressed.getScaledInstance(btnBackpack.getWidth(), btnBackpack.getHeight(), Image.SCALE_FAST)));
+			}
+			public void mouseReleased(MouseEvent e) {
+				if (!player.Alive())return;
+				btnBackpack.setIcon(new ImageIcon(pic.backpack_img.getScaledInstance(btnBackpack.getWidth(), btnBackpack.getHeight(), Image.SCALE_FAST)));
+				if(e.getX()>0 && e.getX()<btnBackpack.getWidth() && e.getY()>0 && e.getY()<btnBackpack.getHeight()) 
+				{
+					btnBackpack_press();
 				}
-				lblHealth.requestFocusInWindow();
 			}
 		});
 		btnBackpack.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnBackpack.setFocusable(false);
-		btnBackpack.setBounds(773, 377, 130, 46);
+		
 		contentPane.add(btnBackpack);
 		// ----------------------------------------------
 		JLabel btnTalents = new JLabel();
