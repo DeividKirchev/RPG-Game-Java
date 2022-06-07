@@ -7,7 +7,6 @@ import loot.chest.NormalChest;
 import java.awt.EventQueue;
 import java.awt.Image;
 import java.util.Random;
-
 import javax.swing.Timer;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -28,7 +27,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 public class MainFrame extends JFrame {
-
+	
 	private static final long serialVersionUID = 1L;
 	final int MAP_SIZE = 10 + 1;
 	final String FolderPath = System.getProperty("user.dir") + "\\src\\basics\\Maps\\";
