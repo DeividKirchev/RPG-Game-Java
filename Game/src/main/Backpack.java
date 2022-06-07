@@ -6,7 +6,11 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -30,6 +34,7 @@ public class Backpack extends JInternalFrame {
 	static Item itemWeaponRight;
 	static Item itemWeaponLeft;
 	static Item itemExtra;
+	JLabel lblTrash = new JLabel("");
 	Boolean dragging_window = false;
 	Item swap1;
 	Item swap2;
@@ -113,7 +118,7 @@ public class Backpack extends JInternalFrame {
 			if(x==0 && y==1)l=lblWeaponLeft;
 			if(x==2 && y==1)l=lblWeaponRight;
 			if(x==0 && y==2)l=lblExtra;
-			
+			if(x==2 && y==2)l=lblTrash;
 			for(int i=0;i<3;i++)
 			{ 
 				for(int j=0;j<=4;j++)
@@ -180,6 +185,46 @@ public class Backpack extends JInternalFrame {
 						inventory_items[i] = swap1;
 						f = true;
 						}
+				}
+				
+				if(l.getName() == lblTrash.getName())
+				{
+					if(swap.getName() == lblExtra.getName())
+					{
+					itemExtra = null;
+					}
+				if(swap.getName() == lblChest.getName())
+					{
+					itemChest = null;
+					}
+				if(swap.getName() == lblLegs.getName())
+					{
+					itemLegs = null;
+					}
+				if(swap.getName() == lblHelmet.getName())
+					{
+					itemHelmet = null;
+					}
+				if(swap.getName() == lblWeaponLeft.getName())
+					{
+					itemWeaponLeft = null;
+					}
+				if(swap.getName() == lblWeaponRight.getName())
+					{
+					itemWeaponRight = null;
+					}
+				for(int i=0;i<15;i++)
+				{
+					if(swap.getName() == inventory[i].getName())
+						{
+						inventory_items[i] = null;
+						}
+				}
+				setIcon(l);
+				setIcon(swap);
+				MainFrame.setStats();
+				return;
+				
 				}
 				if(f == false)return;
 				setIcon(l);
@@ -797,8 +842,18 @@ public class Backpack extends JInternalFrame {
 		//contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		 contentPane.add(movingLabel);
+		 BufferedImage trash_img = null;// = new BufferedImage(50, 50, 1);
+		 try {
+			 trash_img = ImageIO.read(new File(System.getProperty("user.dir")+"\\src\\basics\\trashcan.png"));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		lblTrash.setSize(50, 50);
+		lblTrash.setLocation(140, 140);
+		lblTrash.setIcon(new ImageIcon(trash_img.getScaledInstance(50, 50, Image.SCALE_FAST)));
+		lblTrash.setName("lblTrash");
+	    contentPane.add(movingLabel);
+		contentPane.add(lblTrash);
 		paneStats.setFocusable(false);
 		
 		
