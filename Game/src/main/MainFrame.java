@@ -595,7 +595,7 @@ public class MainFrame extends JFrame {
 		// System.out.println(System.getProperty("user.dir"));
 		// ======================CONTENT PANE=========================================
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 940, 687);
+		setBounds(100, 100, 940, 720);
         
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -772,7 +772,7 @@ public class MainFrame extends JFrame {
 		background = new JLabel();
 		background.setLocation(0, 0);
 		background.setFocusable(false);
-		background.setSize(new Dimension(924, 687));
+		background.setSize(new Dimension(this.getWidth(), this.getHeight()));
 		background.setIcon(new ImageIcon(
 				pic.MedievalBG.getScaledInstance(this.getSize().width, this.getSize().height, Image.SCALE_FAST)));
 		background.setOpaque(false);

@@ -278,11 +278,6 @@ try {
 	e.printStackTrace();
 }
 try {
-	menuBG = ImageIO.read(new File(DefaultFilePath+"\\src\\basics\\menuBG.png"));
-} catch (IOException e) {
-	e.printStackTrace();
-}
-try {
 	hunter_trans = ImageIO.read(new File(DefaultFilePath+"\\src\\basics\\hunter.png"));
 } catch (IOException e) {
 	e.printStackTrace();

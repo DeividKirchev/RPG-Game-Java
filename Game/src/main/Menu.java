@@ -109,7 +109,7 @@ public class Menu extends JFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Mainframe.switchContentPane();
+				
 			}
 
 			@Override
@@ -121,8 +121,9 @@ public class Menu extends JFrame {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
-				btnCancel.setIcon(Cancel_Button_Icon);
 				
+				btnCancel.setIcon(Cancel_Button_Icon);
+				if(e.getX()>0 && e.getX()<btnCancel.getWidth() && e.getY()>0 && e.getY()<btnCancel.getHeight())Mainframe.switchContentPane();
 			}
 
 			@Override
@@ -187,7 +188,7 @@ public class Menu extends JFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.exit(0);
+				
 			}
 
 			@Override
@@ -200,6 +201,7 @@ public class Menu extends JFrame {
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
 				btnExit.setIcon(Exit_Button_Icon);
+				if(e.getX()>0 && e.getX()<btnExit.getWidth() && e.getY()>0 && e.getY()<btnExit.getHeight())System.exit(0);
 				
 			}
 
